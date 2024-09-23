@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Button Links</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Disable right-click and long press on buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                // Disable right-click for desktop users
+                button.addEventListener('contextmenu', function(event) {
+                    event.preventDefault();
+                });
+
+                // Disable long press for mobile users
+                let timer;
+                button.addEventListener('touchstart', function(event) {
+                    timer = setTimeout(function() {
+                        event.preventDefault(); // Prevent the long-press context menu
+                    }, 500); // Trigger after 500ms (long press)
+                });
+
+                button.addEventListener('touchend', function() {
+                    clearTimeout(timer); // Clear the timer if the touch ends before 500ms
+                });
+
+                button.addEventListener('touchmove', function() {
+                    clearTimeout(timer); // Clear the timer if the user moves their finger
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Medoracle Site</h1>
+    <div class="container">
+        <!-- Link the first button to second.html -->
+        <button onclick="window.location.href='second.html';">Prepladder 6</button>
+        <button onclick="window.location.href='third.html';">Marrow 6 </button>
+        <button onclick="window.location.href='fourth.html';">Egurukul & DBMCI</button>
+        <button onclick="window.location.href='https://url4.com';">Button 4</button>
+        <button onclick="window.location.href='https://url5.com';">Button 5</button>
+        <button onclick="window.location.href='https://url6.com';">Button 6</button>
+        <button onclick="window.location.href='https://url7.com';">Button 7</button>
+        <button onclick="window.location.href='https://url8.com';">Button 8</button>
+    </div>
+</body>
+</html>
